@@ -25,12 +25,12 @@ const reactionSchema = new Schema(
         return timestamp ? timestamp.toLocaleString() : null;      //Use a getter method to format the timestamp on query
       },
     },
+  },
   {
     toJSON: {
       getters: true,
     },
-  }
-);
-
+  },
+)
 
 module.exports = reactionSchema;
