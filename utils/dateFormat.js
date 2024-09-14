@@ -1,23 +1,18 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const addZero = (num) => (num < 10 ? `0${num}` : num);
 
-const thoughtSchema = new Schema({
-  thoughtText: {
-    type: String,
-    required: true,
-    maxlength: 280
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: timestamp => dateFormat(timestamp) // Using the dateFormat utility
-  },
-  // Other fields...
-}, {
-  toJSON: {
-    getters: true
-  },
-  id: false
-});
+// Function to format the date
+const dateFormat = (timestamp) => {
+  const dateObj = new Date(timestamp);
+  
+  const month = addZero(dateObj.getMonth() + 1); // months are zero-indexed
+  const day = addZero(dateObj.getDate());
+  const year = dateObj.getFullYear();
+  
+  const hours = addZero(dateObj.getHours());
+  const minutes = addZero(dateObj.getMinutes());
+  const seconds = addZero(dateObj.getSeconds());
 
-module.exports = model('d', thoughtSchema);
+  return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
+};
+
+module.exports = dateFormat;
