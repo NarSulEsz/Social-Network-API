@@ -8,6 +8,7 @@ module.exports = {
       const thoughts = await Thought.find();
       res.json(thoughts);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   },
@@ -15,12 +16,13 @@ module.exports = {
   // Get a single thought by its ID
   async getSingleThought(req, res) {
     try {
-      const thought = await Thought.findById(req.params.thoughtId);
+      const thought = await Thought.findOne({_id:req.params.thoughtId});
       if (!thought) {
         return res.status(404).json({ message: 'No thought found with that ID' });
       }
       res.json(thought);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -41,6 +43,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -56,6 +59,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -81,6 +85,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -100,6 +105,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -119,6 +125,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.error(err);f
       res.status(500).json(err);
     }
   },
