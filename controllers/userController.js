@@ -7,6 +7,7 @@ module.exports = {
       const users = await User.find().select('-__v');
       res.json(users);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -25,6 +26,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -35,6 +37,7 @@ module.exports = {
       const user = await User.create(req.body);
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -54,6 +57,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -72,6 +76,7 @@ module.exports = {
 
       res.json({ message: 'User and associated thoughts deleted!' });
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -91,6 +96,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   },
@@ -110,6 +116,7 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
   }
